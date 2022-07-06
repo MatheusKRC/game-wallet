@@ -11,8 +11,9 @@ const INITIAL_STATE = {
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case 'WALLET_ACTION':
-    return { wallet: { ...state.wallet },
-    };
+    return {
+      currencies: Object.keys(action.state).filter((remove) => remove !== 'USDT') };
+
   default:
     return state;
   }

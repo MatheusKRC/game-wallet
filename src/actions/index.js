@@ -9,3 +9,11 @@ export const userAction = (state) => ({
 export const walletAction = (state) => ({
   type: 'WALLET_ACTION',
   state });
+
+export function fetchWallet() {
+  return (dispatch) => {
+    fetch('https://economia.awesomeapi.com.br/json/all')
+      .then((response) => response.json())
+      .then((currencies) => dispatch(walletAction(currencies)));
+  };
+}
