@@ -2,8 +2,13 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchWallet } from '../actions';
+import Tabela from '../components/Tabela';
 
 class Wallet extends React.Component {
+  state = {
+    expenses: [],
+  }
+
   componentDidMount = () => {
     const { receiveCurrencies } = this.props;
     receiveCurrencies();
@@ -33,6 +38,17 @@ class Wallet extends React.Component {
     return categoriesTag;
   }
 
+  handleChange = ({ target }) => {
+    const { value, name } = target;
+    const { expenses } = this.state;
+    this.setState({ expenses: { [name]: value } });
+    return expenses;
+  };
+
+  handleClick = () => {
+    console.log('oi');
+  }
+
   render() {
     const { email } = this.props;
     return (
@@ -50,6 +66,7 @@ class Wallet extends React.Component {
             type="text"
             data-testid="value-input"
             placeholder="Valor da despesa"
+            onChange={ this.handleChange }
           />
 
           <br />
@@ -58,6 +75,7 @@ class Wallet extends React.Component {
             type="text"
             data-testid="description-input"
             placeholder="Descrição"
+            onChange={ this.handleChange }
           />
 
           <br />
@@ -66,6 +84,7 @@ class Wallet extends React.Component {
             Moeda
             <select
               id="coin"
+              onChange={ this.handleChange }
             >
               {this.getCurrencies()}
             </select>
@@ -75,17 +94,29 @@ class Wallet extends React.Component {
           <select
             id="payment-methods"
             data-testid="method-input"
+            onChange={ this.handleChange }
           >
             {this.getMethod()}
           </select>
 
           <select
             id="categories"
+            onChange={ this.handleChange }
             data-testid="tag-input"
           >
             {this.getCategory()}
           </select>
         </form>
+
+        <button
+          type="button"
+          onClick={ this.handleClick }
+        >
+          Adicionar despesa
+
+        </button>
+
+        <Tabela />
 
       </div>);
   }
