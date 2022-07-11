@@ -1,6 +1,7 @@
 // Coloque aqui suas actions
 export const USER_ACTION = 'USER_ACTION';
 export const WALLET_ACTION = 'WALLET_ACTION';
+export const EXPENSES_ACTION = 'EXPENSES_ACTION';
 
 export const userAction = (state) => ({
   type: 'USER_ACTION',
@@ -9,6 +10,10 @@ export const userAction = (state) => ({
 export const walletAction = (currencies) => ({
   type: 'WALLET_ACTION',
   currencies });
+
+export const expensesAction = (expenses) => ({
+  type: 'EXPENSES_ACTION',
+  expenses });
 
 export function fetchWallet() {
   return async (dispatch) => {
