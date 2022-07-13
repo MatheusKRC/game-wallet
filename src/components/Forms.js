@@ -8,7 +8,7 @@ const alimento = 'Alimentação';
 class Forms extends Component {
   state = {
     id: 0,
-    value: 0,
+    value: '',
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
@@ -48,7 +48,7 @@ class Forms extends Component {
         receiveExpenses({ ...this.state, exchangeRates: data });
         this.setState(((prevState) => ({ id: prevState.id + 1,
         })));
-        this.setState({ value: 0 });
+        this.setState({ value: '' });
       }
 
       render() {

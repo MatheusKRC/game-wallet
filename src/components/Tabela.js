@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeExpense } from '../actions/index';
 
 class Tabela extends Component {
   getTotalField = () => {
-    const { expenses } = this.props;
+    const { expenses, removeTarget } = this.props;
     if (expenses) {
       return (
         expenses.map((info, index) => (
@@ -13,8 +14,7 @@ class Tabela extends Component {
             <td>{info.tag}</td>
             <td>{info.method}</td>
             <td>
-              {info.value}
-              .00
+              {parseFloat(info.value).toFixed(2)}
             </td>
             <td>{info.currency}</td>
             <td>{info.exchangeRates[info.currency].name.split('/Real Brasileiro')}</td>
@@ -26,6 +26,18 @@ class Tabela extends Component {
 
             </td>
             <td>Real</td>
+            <td>
+              <button
+                type="button"
+                data-testid="delete-btn"
+                onClick={ () => removeTarget(info.id) }
+              >
+                Apagar
+
+              </button>
+
+            </td>
+
           </tr>
         ))
 
@@ -36,27 +48,34 @@ class Tabela extends Component {
   render() {
     const { expenses } = this.props;
     return (
+      <table>
 
-      <thead>
+        <thead>
+          <th>
+            <td>Descrição</td>
+            <td>Tag</td>
+            <td>Método de pagamento</td>
+            <td>Valor</td>
+            <td>Moeda</td>
+            <td>Câmbio utilizado</td>
+            <td>Valor convertido</td>
+            <td>Moeda de conversão</td>
+            <td>Editar/Excluir</td>
+          </th>
 
-        <tr>
-          <th>Descrição</th>
-          <th>Tag</th>
-          <th>Método de pagamento</th>
-          <th>Valor</th>
-          <th>Moeda</th>
-          <th>Câmbio utilizado</th>
-          <th>Valor convertido</th>
-          <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
-        </tr>
-        {expenses && this.getTotalField()}
+          {expenses && this.getTotalField()}
 
-      </thead>
+        </thead>
+
+      </table>
 
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  removeTarget: (expenses) => dispatch(removeExpense(expenses)),
+});
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
@@ -64,6 +83,7 @@ const mapStateToProps = (state) => ({
 
 Tabela.propTypes = {
   expenses: propTypes.arrayOf(propTypes.string).isRequired,
+  removeTarget: propTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Tabela);
+export default connect(mapStateToProps, mapDispatchToProps)(Tabela);

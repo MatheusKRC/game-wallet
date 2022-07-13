@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 class Header extends Component {
-  // state = {
-  //   totalValue: 0,
-  // }
-
  getTotalField = () => {
    const { expenses } = this.props;
    if (expenses) {

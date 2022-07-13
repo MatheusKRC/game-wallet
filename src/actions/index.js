@@ -15,6 +15,11 @@ export const expensesAction = (expenses) => ({
   type: 'EXPENSES_ACTION',
   expenses });
 
+export const removeExpense = (id) => ({
+  type: 'REMOVE_EXPENSE',
+  id,
+});
+
 export function fetchWallet() {
   return async (dispatch) => {
     const request = await fetch('https://economia.awesomeapi.com.br/json/all');
