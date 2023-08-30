@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeExpense } from '../actions/index';
+import { removeExpense, editSave } from '../actions/index';
 
 class Tabela extends Component {
   getTotalField = () => {
-    const { expenses, removeTarget } = this.props;
+    const { expenses, removeTarget, editTarget } = this.props;
     if (expenses) {
       return (
         expenses.map((info, index) => (
@@ -29,6 +29,14 @@ class Tabela extends Component {
             <td>
               <button
                 type="button"
+                data-testid="edit-btn"
+                onClick={ () => editTarget(info.id) }
+              >
+                Editar
+
+              </button>
+              <button
+                type="button"
                 data-testid="delete-btn"
                 onClick={ () => removeTarget(info.id) }
               >
@@ -50,22 +58,17 @@ class Tabela extends Component {
     return (
       <table>
 
-        <thead>
-          <th>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
-          </th>
+        <th>Descrição</th>
+        <th>Tag</th>
+        <th>Método de pagamento</th>
+        <th>Valor</th>
+        <th>Moeda</th>
+        <th>Câmbio utilizado</th>
+        <th>Valor convertido</th>
+        <th>Moeda de conversão</th>
+        <th>Editar/Excluir</th>
 
-          {expenses && this.getTotalField()}
-
-        </thead>
+        {expenses && this.getTotalField()}
 
       </table>
 
@@ -75,6 +78,7 @@ class Tabela extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   removeTarget: (expenses) => dispatch(removeExpense(expenses)),
+  editTarget: (expenses) => dispatch(editSave(expenses)),
 });
 
 const mapStateToProps = (state) => ({
@@ -84,6 +88,7 @@ const mapStateToProps = (state) => ({
 Tabela.propTypes = {
   expenses: propTypes.arrayOf(propTypes.string).isRequired,
   removeTarget: propTypes.func.isRequired,
+  editTarget: propTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tabela);

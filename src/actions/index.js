@@ -2,6 +2,8 @@
 export const USER_ACTION = 'USER_ACTION';
 export const WALLET_ACTION = 'WALLET_ACTION';
 export const EXPENSES_ACTION = 'EXPENSES_ACTION';
+export const EDIT_SAVE = 'EDIT_SAVE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const userAction = (state) => ({
   type: 'USER_ACTION',
@@ -17,6 +19,11 @@ export const expensesAction = (expenses) => ({
 
 export const removeExpense = (id) => ({
   type: 'REMOVE_EXPENSE',
+  id,
+});
+
+export const editSave = (id) => ({
+  type: 'EDIT_SAVE',
   id,
 });
 

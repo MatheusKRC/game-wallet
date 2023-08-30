@@ -2,6 +2,7 @@
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
+  expenseEdit: [],
   editor: false,
   idToEdit: 0,
 };
@@ -20,7 +21,14 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: state.expenses.filter((remove) => remove.id !== action.id),
     };
+  case 'EDIT_SAVE':
+    return {
+      ...state,
+      editor: true,
+      expenseEdit: state.expenses.find((edit) => edit.id === action.id),
+    };
   default:
+
     return state;
   }
 };

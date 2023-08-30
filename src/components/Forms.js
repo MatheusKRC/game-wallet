@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchWallet, expensesAction } from '../actions';
+import { fetchWallet, expensesAction, removeExpense } from '../actions';
 
 const alimento = 'Alimentação';
 
@@ -48,11 +48,21 @@ class Forms extends Component {
         receiveExpenses({ ...this.state, exchangeRates: data });
         this.setState(((prevState) => ({ id: prevState.id + 1,
         })));
-        this.setState({ value: '' });
+        this.setState({ value: '', description: '' });
+      }
+
+      editTarget = async () => {
+        const { expenseEdit, removeTarget, receiveExpenses } = this.props;
+        const request = await fetch('https://economia.awesomeapi.com.br/json/all');
+        const data = await request.json();
+        const { id } = this.state;
+        removeTarget(expenseEdit.id);
+        receiveExpenses({ ...this.state, exchangeRates: data });
+        this.setState({ id, value: '', description: '' });
       }
 
       render() {
-        const { currencies } = this.props;
+        const { currencies, editor } = this.props;
         const { value, description, tag, currency, method } = this.state;
         return (
           <form>
@@ -113,13 +123,23 @@ class Forms extends Component {
               {this.getCategory()}
             </select>
 
-            <button
-              type="button"
-              onClick={ this.handleClick }
-            >
-              Adicionar despesa
+            {!editor && (
+              <button
+                type="button"
+                onClick={ this.handleClick }
+              >
+                Adicionar despesa
 
-            </button>
+              </button>) }
+
+            {editor && (
+              <button
+                type="button"
+                onClick={ this.editTarget }
+              >
+                Editar despesa
+
+              </button>) }
           </form>
 
         );
@@ -129,11 +149,14 @@ class Forms extends Component {
 const mapDispatchToProps = (dispatch) => ({
   receiveCurrencies: () => dispatch(fetchWallet()),
   receiveExpenses: (payload) => dispatch(expensesAction(payload)),
+  removeTarget: (expenses) => dispatch(removeExpense(expenses)),
 });
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  editor: state.wallet.editor,
+  expenseEdit: state.wallet.expenseEdit,
 });
 
 Forms.propTypes = {
