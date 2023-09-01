@@ -1,6 +1,6 @@
 .loginPage {
-    width: 1919px;
-    height: 967px;
+    width: 100%;
+    height: 975px;
 
     display: flex;
     justify-content: center;
@@ -15,8 +15,8 @@
 }
 
 .loginImage {
-    width: 404px;
-    height: 605px;
+    width: 100%;
+    height: 100%;
 }
 
 .form {
