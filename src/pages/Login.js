@@ -2,6 +2,8 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { userAction } from '../actions';
+import login from '../Images/login.png';
+import logo from '../Images/Logo.png';
 
 class Login extends React.Component {
   state = {
@@ -37,34 +39,47 @@ class Login extends React.Component {
 
     return (
 
-      <div>
-        <input
-          name="email"
-          type="email"
-          data-testid="email-input"
-          minLength="6"
-          onChange={ this.handleChange }
-          value={ email }
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          data-testid="password-input"
-          onChange={ this.handleChange }
-          value={ password }
-          required
-        />
+      <div className="loginPage">
+        <form className="login">
 
-        <button
-          type="button"
-          id="entrar"
-          onClick={ this.handleClick }
-          disabled={ disabled }
-        >
-          Entrar
+          <picture>
+            <img className="loginImage" src={ login } alt="pixel art do ceu azul" />
+          </picture>
+          <div className="form">
+            <img src={ logo } alt="logo game wallet" />
+            <input
+              name="email"
+              type="email"
+              data-testid="email-input"
+              placeholder="E-mail"
+              minLength="6"
+              onChange={ this.handleChange }
+              value={ email }
+              required
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Senha"
+              data-testid="password-input"
+              onChange={ this.handleChange }
+              value={ password }
+              required
+            />
 
-        </button>
+            <button
+              type="button"
+              id="entrar"
+              onClick={ this.handleClick }
+              disabled={ disabled }
+            >
+              Entrar
+
+            </button>
+
+          </div>
+
+        </form>
 
       </div>
 

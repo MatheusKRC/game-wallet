@@ -1,0 +1,75 @@
+.loginPage {
+    width: 1919px;
+    height: 967px;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
+    background-image: url('/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/background.jpeg');
+}
+
+.login {
+    display: flex;
+}
+
+.loginImage {
+    width: 404px;
+    height: 605px;
+}
+
+.form {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+    width: 596px;
+    height: 605px;
+    background: linear-gradient(180deg, #0079EF 0%, rgba(139, 198, 255, 0.79) 100%);
+}
+
+input {
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+
+    margin-bottom: 30px;
+
+    padding: 10px;
+}
+
+button {
+    color: white;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    width: 124px;
+    height: 37px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: #3A7CBD;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.445);
+
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translate(0px, -4px);
+}
+
+button:active {
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.445);
+
+    transform: translate(0px, 0px);
+}
+
+button:disabled {
+    color: rgba(0, 0, 0, 0.298);
+}
