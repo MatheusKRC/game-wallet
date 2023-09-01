@@ -1,7 +1,16 @@
 .walletPage {
     width: 1919px;
     height: 975px;
-    margin-top: -21px;
+    margin-top: 0px;
 
-    background-image: url('/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/background.jpeg');
+    flex-direction: column;
+
+    background: url(/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/backgroundOp.png);
 }
+
+main {
+    background: linear-gradient(180deg, #0079EF 0%, #67bff58a 80%);
+}
+
+
+

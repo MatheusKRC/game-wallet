@@ -6,6 +6,7 @@ import './CSS/Login.css';
 import './CSS/Wallet.css';
 import './CSS/Forms.css';
 import './CSS/Header.css';
+import './CSS/Table.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

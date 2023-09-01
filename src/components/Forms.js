@@ -65,33 +65,44 @@ class Forms extends Component {
         const { currencies, editor } = this.props;
         const { value, description, tag, currency, method } = this.state;
         return (
-          <form>
-            <input
-              name="value"
-              type="text"
-              data-testid="value-input"
-              value={ value }
-              placeholder="Valor da despesa"
-              onChange={ this.handleChange }
-            />
+          <form className="walletForm">
+
+            <label htmlFor="value">
+              Valor:
+              <input
+                name="value"
+                type="text"
+                className="inputWallet"
+                data-testid="value-input"
+                value={ value }
+                placeholder="Valor da despesa"
+                onChange={ this.handleChange }
+              />
+
+            </label>
 
             <br />
 
-            <textarea
-              name="description"
-              type="text"
-              data-testid="description-input"
-              value={ description }
-              placeholder="Descrição"
-              onChange={ this.handleChange }
-            />
+            <label htmlFor="description">
+              <textarea
+                name="description"
+                type="text"
+                className="inputWallet"
+                data-testid="description-input"
+                value={ description }
+                placeholder="Descrição"
+                onChange={ this.handleChange }
+              />
+
+            </label>
 
             <br />
 
             <label htmlFor="coin">
-              Moeda
+              Moeda:
               <select
                 name="currency"
+                className="inputWallet"
                 id="coin"
                 value={ currency }
                 onChange={ this.handleChange }
@@ -103,29 +114,40 @@ class Forms extends Component {
 
             </label>
 
-            <select
-              name="method"
-              id="payment-methods"
-              value={ method }
-              data-testid="method-input"
-              onChange={ this.handleChange }
-            >
-              {this.getMethod()}
-            </select>
+            <label htmlFor="method">
+              Metodo de Pagamento:
+              <select
+                name="method"
+                id="payment-methods"
+                className="inputWallet"
+                value={ method }
+                data-testid="method-input"
+                onChange={ this.handleChange }
+              >
+                {this.getMethod()}
+              </select>
 
-            <select
-              name="tag"
-              id="categories"
-              value={ tag }
-              data-testid="tag-input"
-              onChange={ this.handleChange }
-            >
-              {this.getCategory()}
-            </select>
+            </label>
+
+            <label htmlFor="tag">
+              Tag:
+              <select
+                name="tag"
+                id="categories"
+                className="inputWallet"
+                value={ tag }
+                data-testid="tag-input"
+                onChange={ this.handleChange }
+              >
+                {this.getCategory()}
+              </select>
+
+            </label>
 
             {!editor && (
               <button
                 type="button"
+                className="buttonWallet"
                 onClick={ this.handleClick }
               >
                 Adicionar despesa
@@ -135,6 +157,7 @@ class Forms extends Component {
             {editor && (
               <button
                 type="button"
+                className="buttonWallet"
                 onClick={ this.editTarget }
               >
                 Editar despesa

@@ -1,0 +1,50 @@
+table {
+    table-layout: auto;
+
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+
+    width: 1920px;
+}
+
+.table  {
+    display: flex;
+
+    justify-content: space-around;
+
+    text-align: center;
+}
+
+th {
+    color: white;
+    background-image: url(/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/Cave.png);
+
+    padding: 10px;
+
+    border-radius: 40px;
+
+    text-align: center;
+    width: 8.33%;
+
+    align-self: center;
+
+    margin-bottom: 20px;
+}
+
+.linhas {
+    display: flex;
+
+    justify-content: space-around;
+}
+
+td {
+    text-align: center;
+
+    width: 8.33%;
+}
+
+.buttonTable {
+    width: 50px;
+    margin-right: 10px;
+}

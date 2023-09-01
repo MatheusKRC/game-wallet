@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import logo from '../Images/LogoName.png';
 
 class Header extends Component {
  getTotalField = () => {
@@ -9,7 +10,7 @@ class Header extends Component {
      const total = expenses.reduce((acc,
        val) => acc + Number(val.value) * Number(val.exchangeRates[val.currency].ask), 0);
      return (
-       <h3 data-testid="total-field">{(total).toFixed(2)}</h3>
+       <h3 data-testid="total-field">{`${(total).toFixed(2)}BRL`}</h3>
      );
    }
  }
@@ -18,12 +19,12 @@ class Header extends Component {
    const { email, expenses } = this.props;
    return (
      <header>
-       <h1>TrybeWallet</h1>
+       <img src={ logo } alt="logo" />
        <h2 data-testid="email-field">
          {`User: ${email}`}
        </h2>
-       {expenses && this.getTotalField()}
-       <h3 data-testid="header-currency-field">BRL</h3>
+       {expenses && this.getTotalField() }
+
      </header>
 
    );

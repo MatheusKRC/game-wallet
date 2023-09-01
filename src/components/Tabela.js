@@ -9,14 +9,13 @@ class Tabela extends Component {
     if (expenses) {
       return (
         expenses.map((info, index) => (
-          <tr key={ index }>
+          <tr key={ index } className="linhas">
             <td>{info.description}</td>
             <td>{info.tag}</td>
             <td>{info.method}</td>
             <td>
               {parseFloat(info.value).toFixed(2)}
             </td>
-            <td>{info.currency}</td>
             <td>{info.exchangeRates[info.currency].name.split('/Real Brasileiro')}</td>
             <td>{parseFloat(info.exchangeRates[info.currency].ask).toFixed(2)}</td>
             <td>
@@ -29,18 +28,20 @@ class Tabela extends Component {
             <td>
               <button
                 type="button"
+                className="buttonTable"
                 data-testid="edit-btn"
                 onClick={ () => editTarget(info.id) }
               >
-                Editar
+                .
 
               </button>
               <button
                 type="button"
+                className="buttonTable"
                 data-testid="delete-btn"
                 onClick={ () => removeTarget(info.id) }
               >
-                Apagar
+                .
 
               </button>
 
@@ -56,19 +57,25 @@ class Tabela extends Component {
   render() {
     const { expenses } = this.props;
     return (
+
       <table>
+        <tbody>
+          <tr className="table">
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
 
-        <th>Descrição</th>
-        <th>Tag</th>
-        <th>Método de pagamento</th>
-        <th>Valor</th>
-        <th>Moeda</th>
-        <th>Câmbio utilizado</th>
-        <th>Valor convertido</th>
-        <th>Moeda de conversão</th>
-        <th>Editar/Excluir</th>
+          </tr>
 
-        {expenses && this.getTotalField()}
+          {' '}
+          {expenses && this.getTotalField()}
+        </tbody>
 
       </table>
 
