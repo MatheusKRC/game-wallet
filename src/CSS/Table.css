@@ -18,7 +18,7 @@ table {
 
 th {
     color: white;
-    background-image: url(/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/Cave.png);
+    background-image: url(/home/matheuskrc/TRYBE/Projetos-FrontEnd/sd-021-a-project-trybewallet/src/Images/background.jpeg);
 
     padding: 10px;
 
@@ -42,6 +42,12 @@ td {
     text-align: center;
 
     width: 8.33%;
+
+    color: white;
+    font-weight: 900;
+    font-size: large;
+
+    margin-bottom: 10px;
 }
 
 .buttonTable {

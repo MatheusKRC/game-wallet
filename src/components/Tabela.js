@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeExpense, editSave } from '../actions/index';
+import trash from '../Images/trash.png';
+import edit from '../Images/edit.png';
 
 class Tabela extends Component {
   getTotalField = () => {
@@ -32,7 +34,7 @@ class Tabela extends Component {
                 data-testid="edit-btn"
                 onClick={ () => editTarget(info.id) }
               >
-                .
+                <img width="30px" src={ edit } alt="edit" />
 
               </button>
               <button
@@ -41,7 +43,7 @@ class Tabela extends Component {
                 data-testid="delete-btn"
                 onClick={ () => removeTarget(info.id) }
               >
-                .
+                <img width="30px" src={ trash } alt="lixeira" />
 
               </button>
 

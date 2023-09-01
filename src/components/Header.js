@@ -10,7 +10,7 @@ class Header extends Component {
      const total = expenses.reduce((acc,
        val) => acc + Number(val.value) * Number(val.exchangeRates[val.currency].ask), 0);
      return (
-       <h3 data-testid="total-field">{`${(total).toFixed(2)}BRL`}</h3>
+       <h3 className="value" data-testid="total-field">{`${(total).toFixed(2)}BRL`}</h3>
      );
    }
  }
@@ -19,8 +19,8 @@ class Header extends Component {
    const { email, expenses } = this.props;
    return (
      <header>
-       <img src={ logo } alt="logo" />
-       <h2 data-testid="email-field">
+       <img className="logoH" src={ logo } alt="logo" />
+       <h2 className="name" data-testid="email-field">
          {`User: ${email}`}
        </h2>
        {expenses && this.getTotalField() }
